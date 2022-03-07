@@ -1,0 +1,6 @@
+phpmailer/
+package-lock.json
+node_modules/
+dist/
+Source/
+version.json
