@@ -1,6 +1,6 @@
 import fs from 'fs';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import FileIncludeWebpackPlugin from 'file-include-webpack-plugin-replace';
+import FileIncludeWebpackPlugin from 'file-include-webpack-plugin';
 import CopyPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from "terser-webpack-plugin";

@@ -1,6 +1,4 @@
-phpmailer/
-package-lock.json
-node_modules/
+.idea
 dist/
-Source/
-version.json
+node_modules/
+package-lock.json

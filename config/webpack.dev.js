@@ -1,5 +1,5 @@
 import fs from 'fs';
-import FileIncludeWebpackPlugin from 'file-include-webpack-plugin-replace';
+import FileIncludeWebpackPlugin from 'file-include-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from "copy-webpack-plugin";
 
