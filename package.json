@@ -10,7 +10,7 @@
     "build": "gulp build --build",
     "sprite": "gulp sprite",
     "fonts": "gulp fonts --rewrite",
-    "devbuild": "gulp build --build --nowebp"
+    "devbuild": "gulp build --build --no-webp"
   },
   "devDependencies": {
     "copy-webpack-plugin": "latest",
@@ -29,7 +29,6 @@
     "gulp-rename": "latest",
     "gulp-svg-sprite": "latest",
     "gulp-ttf2woff2": "latest",
-    "gulp-version-number": "latest",
     "gulp-webp": "latest",
     "gulp-webpcss": "latest",
     "html-webpack-plugin": "latest",
