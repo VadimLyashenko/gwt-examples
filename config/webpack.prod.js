@@ -19,8 +19,7 @@ if (!pugPages.length) {
     source: srcFolder,
     destination: '../',
     htmlBeautifyOptions: {
-      "indent-with-tabs": true,
-      'indent_size': 3
+      "end_with_newline": true,
     },
     replace: [
       { regex: '../img', to: 'img' },

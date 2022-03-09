@@ -22,23 +22,18 @@ global.app = {
 
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 const devTasks = gulp.parallel(fonts);
-const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
 
 export {reset}
-export {html}
-export {css}
 export {js}
 export {jsDev}
 export {images}
 export {fonts}
 export {sprite}
 
-// Построение сценариев выполнения задач
-const development = gulp.series(devTasks);
-const build = gulp.series(buildTasks);
+const dev = gulp.series(devTasks);
+const build = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
 
-// Экспорт сценариев
-export {development}
+export {dev}
 export {build}
 
-gulp.task('default', development);
+gulp.task('default', dev);
