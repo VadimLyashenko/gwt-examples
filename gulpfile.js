@@ -21,19 +21,13 @@ global.app = {
 }
 
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
-const devTasks = gulp.parallel(fonts);
 
 export {reset}
-export {js}
 export {jsDev}
 export {images}
-export {fonts}
 export {sprite}
 
-const dev = gulp.series(devTasks);
 const build = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
 
-export {dev}
 export {build}
-
-gulp.task('default', dev);
+gulp.task('default', fonts);
