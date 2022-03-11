@@ -11,7 +11,7 @@
     "sprite": "gulp sprite",
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
-    "el": "eslint --ext .js ."
+    "el": "eslint ."
   },
   "devDependencies": {
     "copy-webpack-plugin": "latest",
