@@ -22,18 +22,13 @@
         "no-template-curly-in-string": 1,
         "no-unmodified-loop-condition": 1,
         "no-unused-private-class-members": 1,
-        "no-use-before-define": [
-            2,
-            {
-                "functions": false,
-                "classes": false
-            }
-        ],
+        "no-use-before-define": [2, {"functions": false, "classes": false}],
         "eqeqeq": 2,
         "semi": 2,
-        "quotes": [
-            2,
-            "single"
-        ]
+        "quotes": [2, "single"],
+        "indent": [2, 4, {"SwitchCase": 1}],
+        "object-curly-spacing": [2, "always"],
+        "prefer-const": 1,
+        "comma-dangle": [2, "always-multiline"]
     }
 }
