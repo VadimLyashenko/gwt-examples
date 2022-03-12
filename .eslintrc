@@ -17,7 +17,23 @@
         "no-constant-binary-expression": 2,
         "no-constructor-return": 2,
         "no-duplicate-imports": 2,
+        "no-promise-executor-return": 2,
+        "no-self-compare": 2,
+        "no-template-curly-in-string": 1,
+        "no-unmodified-loop-condition": 1,
+        "no-unused-private-class-members": 1,
+        "no-use-before-define": [
+            2,
+            {
+                "functions": false,
+                "classes": false
+            }
+        ],
         "eqeqeq": 2,
-        "semi": 2
+        "semi": 2,
+        "quotes": [
+            2,
+            "single"
+        ]
     }
 }
