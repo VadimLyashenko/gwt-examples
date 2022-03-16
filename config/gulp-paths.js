@@ -1,5 +1,5 @@
-const buildFolder = './dist'
-const srcFolder = './src'
+const buildFolder = './dist';
+const srcFolder = './src';
 
 export default {
     srcFolder,
@@ -10,7 +10,7 @@ export default {
         css: `${buildFolder}/css/`,
         images: `${buildFolder}/img/`,
         fonts: `${buildFolder}/fonts/`,
-        files: `${buildFolder}/files/`
+        files: `${buildFolder}/files/`,
     },
 
     src: {
@@ -23,4 +23,4 @@ export default {
         files: `${srcFolder}/files/**/*.*`,
         svgicons: `${srcFolder}/svgicons/*.svg`,
     },
-}
+};
