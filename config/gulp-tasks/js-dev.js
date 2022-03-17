@@ -1,14 +1,14 @@
-import webpack from "webpack-stream";
+import webpack from 'webpack-stream';
 import webPackConfig from '../webpack.prod.js';
-import TerserPlugin from "terser-webpack-plugin";
+import TerserPlugin from 'terser-webpack-plugin';
 import * as path from 'path';
 
 const paths = {
-    src: path.resolve("src"),
-    build: path.resolve('dist')
+    src: path.resolve('src'),
+    build: path.resolve('dist'),
 };
 
-let webPackConfigBeautify = Object.assign({}, webPackConfig);
+const webPackConfigBeautify = Object.assign({}, webPackConfig);
 
 webPackConfigBeautify.optimization = {
     minimizer: [new TerserPlugin({
@@ -27,27 +27,24 @@ webPackConfigBeautify.optimization = {
             keep_classnames: true,
             keep_fnames: true,
             format: {
-                beautify: true
-            }
-        }
+                beautify: true,
+            },
+        },
     })],
 };
+
 webPackConfigBeautify.output = {
     path: `${paths.build}`,
-    filename: "app.js",
+    filename: 'app.js',
     publicPath: '/',
-}
+};
 
-export const jsDev = () => {
-    return app.gulp.src(app.path.src.js)
-        .pipe(app.plugins.plumber(
-            app.plugins.notify.onError({
-                title: "JS",
-                message: "Error: <%= error.message %>"
-            }))
-        )
-        .pipe(webpack({
-            config: webPackConfigBeautify
-        }))
-        .pipe(app.gulp.dest(app.path.build.js));
-}
+export const jsDev = () => app.gulp.src(app.path.src.js)
+    .pipe(app.plugins.plumber(app.plugins.notify.onError({
+        title: 'JS',
+        message: 'Error: <%= error.message %>',
+    })))
+    .pipe(webpack({
+        config: webPackConfigBeautify,
+    }))
+    .pipe(app.gulp.dest(app.path.build.js));

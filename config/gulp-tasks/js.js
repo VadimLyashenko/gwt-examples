@@ -1,16 +1,12 @@
-import webpack from "webpack-stream";
+import webpack from 'webpack-stream';
 import webPackConfig from '../webpack.prod.js';
 
-export const js = () => {
-    return app.gulp.src('./src/js/app.js')
-        .pipe(app.plugins.plumber(
-            app.plugins.notify.onError({
-                title: "JS",
-                message: "Error: <%= error.message %>"
-            }))
-        )
-        .pipe(webpack({
-            config: webPackConfig
-        }))
-        .pipe(app.gulp.dest('./dist/js/'));
-};
+export const js = () => app.gulp.src('./src/js/app.js')
+    .pipe(app.plugins.plumber(app.plugins.notify.onError({
+        title: 'JS',
+        message: 'Error: <%= error.message %>',
+    })))
+    .pipe(webpack({
+        config: webPackConfig,
+    }))
+    .pipe(app.gulp.dest('./dist/js/'));

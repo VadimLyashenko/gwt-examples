@@ -4,8 +4,8 @@ import path from './config/gulp-paths.js';
 import {reset} from './config/gulp-tasks/reset.js';
 import {html} from './config/gulp-tasks/html.js';
 import {css} from './config/gulp-tasks/css.js';
-import {js} from './config/gulp-tasks/js.js';
 import {jsDev} from './config/gulp-tasks/js-dev.js';
+import {js} from './config/gulp-tasks/js.js';
 import {images} from './config/gulp-tasks/images.js';
 import {sprite} from './config/gulp-tasks/sprite.js';
 import {fonstStyle, otfToTtf, ttfToWoff} from './config/gulp-tasks/fonts.js';
@@ -23,7 +23,6 @@ global.app = {
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 
 export {reset};
-export {jsDev};
 export {images};
 export {sprite};
 
