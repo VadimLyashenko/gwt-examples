@@ -1,7 +1,7 @@
 import webpack from 'webpack-stream';
 import webPackConfig from '../webpack.prod.js';
 
-export const js = () => app.gulp.src('./src/js/app.js')
+export const js = () => app.gulp.src(app.path.src.js)
     .pipe(app.plugins.plumber(app.plugins.notify.onError({
         title: 'JS',
         message: 'Error: <%= error.message %>',
@@ -9,4 +9,4 @@ export const js = () => app.gulp.src('./src/js/app.js')
     .pipe(webpack({
         config: webPackConfig,
     }))
-    .pipe(app.gulp.dest('./dist/js/'));
+    .pipe(app.gulp.dest(app.path.build.js));

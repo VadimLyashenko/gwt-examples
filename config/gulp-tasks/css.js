@@ -3,7 +3,7 @@ import webpCss from 'gulp-webpcss';
 import autoprefixer from 'gulp-autoprefixer';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
 
-export const css = () => app.gulp.src('./dist/css/style.css', {})
+export const css = () => app.gulp.src(`${app.path.build.css}style.css`, {})
     .pipe(app.plugins.plumber(app.plugins.notify.onError({
         title: 'CSS',
         message: 'Error: <%= error.message %>',
