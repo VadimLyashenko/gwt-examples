@@ -23,7 +23,6 @@ global.app = {
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 
 export {reset};
-export {images};
 export {sprite};
 
 const build = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));

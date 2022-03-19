@@ -11,7 +11,7 @@ export default {
         images: `${src}/img/**/*.{jpg,jpeg,png,gif,webp}`,
         svg: `${src}/img/**/*.svg`,
         fonts: `${src}/fonts/*.*`,
-        svgicons: `${src}/svgicons/*.svg`,
+        svgIcons: `${src}/svg-icons/*.svg`,
     },
 
     build: {
