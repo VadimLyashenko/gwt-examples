@@ -8,7 +8,7 @@ import {jsDev} from './config/gulp-tasks/js-dev.js';
 import {js} from './config/gulp-tasks/js.js';
 import {images} from './config/gulp-tasks/images.js';
 import {sprite} from './config/gulp-tasks/sprite.js';
-import {fonstStyle, otfToTtf, ttfToWoff} from './config/gulp-tasks/fonts.js';
+import {fontsStyle, otfToTtf, ttfToWoff} from './config/gulp-tasks/fonts.js';
 
 global.app = {
     isBuild: process.argv.includes('--build'),
@@ -20,10 +20,11 @@ global.app = {
     plugins,
 };
 
-const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
+const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fontsStyle);
 
 export {reset};
 export {sprite};
+export {fonts};
 
 const build = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
 

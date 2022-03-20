@@ -5,12 +5,10 @@ export default {
     srcFolder: src,
 
     src: {
-        html: `${src}/*.html`,
-        scss: `${src}/scss/style.scss`,
         js: `${src}/js/app.js`,
         images: `${src}/img/**/*.{jpg,jpeg,png,gif,webp}`,
         svg: `${src}/img/**/*.svg`,
-        fonts: `${src}/fonts/*.*`,
+        fonts: `${src}/fonts/`,
         svgIcons: `${src}/svg-icons/*.svg`,
     },
 
