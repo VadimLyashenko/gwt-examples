@@ -50,11 +50,9 @@ const config = {
          * On weak machine
          * (in dev mode, folder will be on disk)
          */
-        /*
-         * devMiddleware: {
-         *     writeToDisk: true,
-         * },
-         */
+        // devMiddleware: {
+        //     writeToDisk: true,
+        // },
 
         watchFiles: [
             `${paths.src}/**/*.html`,

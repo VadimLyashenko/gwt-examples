@@ -104,7 +104,6 @@
                 "exceptAfterSingleLine": true
             }
         ],
-        "multiline-comment-style": 2,
         "multiline-ternary": [2, "always-multiline"],
         "new-cap": [2, {"properties": false}],
         "new-parens": 2,
