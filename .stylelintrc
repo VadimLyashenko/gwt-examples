@@ -1,0 +1,16 @@
+{
+    "ignoreFiles": [
+        "dist/**"
+    ],
+    "extends": [
+        "@primer/stylelint-config"
+    ],
+    "rules": {
+        "indentation": [
+            4,
+            {
+                "baseIndentLevel": 1
+            }
+        ]
+    }
+}

@@ -11,9 +11,12 @@
     "sprite": "gulp sprite",
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
-    "el": "eslint ."
+    "el": "eslint .",
+    "sl": "stylelint \"**/*.scss\""
   },
   "devDependencies": {
+    "@primer/css": "latest",
+    "@primer/stylelint-config": "latest",
     "copy-webpack-plugin": "latest",
     "css-loader": "latest",
     "del": "latest",
