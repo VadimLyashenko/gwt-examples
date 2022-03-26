@@ -12,7 +12,7 @@
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
     "el": "eslint .",
-    "sl": "stylelint \"**/*.scss\""
+    "sl": "stylelint \"**/*.{scss,htm,html}\""
   },
   "devDependencies": {
     "@primer/css": "latest",
@@ -41,6 +41,7 @@
     "lightgallery": "latest",
     "mini-css-extract-plugin": "2.4.7",
     "nouislider": "latest",
+    "postcss-html": "^1.5.0",
     "sass": "latest",
     "sass-loader": "latest",
     "smooth-scroll": "latest",
