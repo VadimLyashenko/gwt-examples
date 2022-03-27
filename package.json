@@ -12,7 +12,8 @@
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
     "el": "eslint .",
-    "sl": "stylelint \"**/*.{scss,htm,html}\""
+    "sl": "stylelint \"**/*.{scss,htm,html}\"",
+    "hl": "htmlhint \"**/*.{htm,html}\""
   },
   "devDependencies": {
     "@primer/css": "latest",
@@ -37,6 +38,7 @@
     "gulp-webp": "latest",
     "gulp-webpcss": "latest",
     "html-webpack-plugin": "latest",
+    "htmlhint": "^1.1.4",
     "inputmask": "latest",
     "lightgallery": "latest",
     "mini-css-extract-plugin": "2.4.7",
