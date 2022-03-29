@@ -9,5 +9,9 @@
     "attr-value-double-quotes": true,
     "attr-sorted": true,
     "attr-whitespace": true,
-    "alt-require": true
+    "alt-require": true,
+    "tag-pair": true,
+    "tagname-lowercase": true,
+    "empty-tag-not-self-closed": true,
+    "src-not-empty": true
 }
