@@ -4,19 +4,17 @@ import CopyPlugin from 'copy-webpack-plugin';
 
 const srcFolder = 'src';
 const buildFolder = 'dist';
-const rootFolder = path.basename(path.resolve());
 
 const htmlPages = [new FileIncludeWebpackPlugin({
     source: srcFolder,
     htmlBeautifyOptions: {
-        'indent-with-tabs': true,
-        indent_size: 3,
+        indent_char: '  ',
+        end_with_newline: true,
     },
     replace: [
         {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
         {regex: '../img', to: 'img'},
         {regex: '@img', to: 'img'},
-        {regex: 'NEW_PROJECT_NAME', to: rootFolder},
     ],
 })];
 
