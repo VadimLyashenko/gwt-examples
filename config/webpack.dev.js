@@ -26,9 +26,6 @@ const paths = {
 const config = {
     mode: 'development',
     devtool: 'inline-source-map',
-    optimization: {
-        minimize: false,
-    },
     entry: `${paths.src}/js/app.js`,
     output: {
         path: `${paths.build}`,
@@ -36,7 +33,9 @@ const config = {
         publicPath: '/',
     },
     devServer: {
-        historyApiFallback: true,
+        historyApiFallback: {
+            index: '/404.html',
+        },
         static: paths.build,
         open: true,
         compress: true,
