@@ -43,10 +43,6 @@ const config = {
         hot: true,
         host: 'local-ip', // localhost
 
-        /*
-         * On weak machine
-         * (in dev mode, folder will be on disk)
-         */
         // devMiddleware: {
         //     writeToDisk: true,
         // },
@@ -100,11 +96,6 @@ const config = {
                 {
                     from: `${srcFolder}/img`,
                     to: 'img',
-                    noErrorOnMissing: true,
-                    force: true,
-                }, {
-                    from: `${srcFolder}/files`,
-                    to: 'files',
                     noErrorOnMissing: true,
                     force: true,
                 }, {
