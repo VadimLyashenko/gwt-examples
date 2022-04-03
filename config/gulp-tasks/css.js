@@ -19,6 +19,9 @@ export const css = () => app.gulp.src(`${app.path.build.css}style.css`, {})
         noWebpClass: '.no-webp',
     }))))
     .pipe(app.gulp.dest(app.path.build.css))
-    .pipe(app.plugins.if(app.isBuild, cleanCss()))
+    .pipe(app.plugins.if(app.isBuild, cleanCss({debug: true}, details => {
+        console.log(`${details.name}: ${details.stats.originalSize}`);
+        console.log(`${details.name}: ${details.stats.minifiedSize}`);
+    })))
     .pipe(app.plugins.rename({suffix: '.min'}))
     .pipe(app.gulp.dest(app.path.build.css));
