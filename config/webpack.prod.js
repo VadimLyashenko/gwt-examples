@@ -7,7 +7,6 @@ import * as path from 'path';
 
 const srcFolder = 'src';
 const buildFolder = 'dist';
-const rootFolder = path.basename(path.resolve());
 
 const htmlPages = [new FileIncludeWebpackPlugin({
     source: srcFolder,
@@ -18,7 +17,6 @@ const htmlPages = [new FileIncludeWebpackPlugin({
     replace: [
         {regex: '../img', to: 'img'},
         {regex: '@img', to: 'img'},
-        {regex: 'NEW_PROJECT_NAME', to: rootFolder},
     ],
 })];
 
@@ -87,10 +85,6 @@ const config = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: `${paths.src}/files`,
-                    to: '../files',
-                    noErrorOnMissing: true,
-                }, {
                     from: `${paths.src}/favicon.ico`,
                     to: '../',
                     noErrorOnMissing: true,
