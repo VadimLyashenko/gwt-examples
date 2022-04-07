@@ -22,7 +22,9 @@
                 "baseIndentLevel": 2
             }
         ],
+        "comment-empty-line-before": "always",
         "selector-max-type": null,
-        "primer/colors": null
+        "primer/colors": null,
+        "primer/spacing": null
     }
 }
