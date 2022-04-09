@@ -25,6 +25,7 @@
         "comment-empty-line-before": "always",
         "selector-max-type": null,
         "primer/colors": null,
-        "primer/spacing": null
+        "primer/spacing": null,
+        "at-rule-disallowed-list": null
     }
 }
