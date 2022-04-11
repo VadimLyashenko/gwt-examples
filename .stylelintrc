@@ -26,6 +26,8 @@
         "selector-max-type": null,
         "primer/colors": null,
         "primer/spacing": null,
+        "primer/borders": null,
+        "primer/typography": null,
         "at-rule-disallowed-list": null
     }
 }
