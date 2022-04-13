@@ -40,7 +40,6 @@ const config = {
         open: true,
         compress: true,
         port: 'auto',
-        hot: true,
         host: 'local-ip', // localhost
 
         // devMiddleware: {
