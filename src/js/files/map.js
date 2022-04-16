@@ -75,7 +75,7 @@ function mapInit(n = 1) {
     }, 500);
   }
 }
-if (document.querySelector('#map')) {
+if (document.querySelector('.map')) {
   mapAdd();
 }
 
