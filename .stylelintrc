@@ -10,7 +10,8 @@
         {
             "files": [
                 "**/*.htm",
-                "**/*.html"
+                "**/*.html",
+                "**/*.ejs"
             ],
             "customSyntax": "postcss-html"
         }

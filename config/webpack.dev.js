@@ -1,22 +1,23 @@
 import * as path from 'path';
-import FileIncludeWebpackPlugin from 'file-include-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackHardDiskPlugin from 'html-webpack-harddisk-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 
 const srcFolder = 'src';
 const buildFolder = 'dist';
 
-const htmlPages = [new FileIncludeWebpackPlugin({
-    source: srcFolder,
-    htmlBeautifyOptions: {
-        indent_char: '  ',
-        end_with_newline: true,
-    },
-    replace: [
-        {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
-        {regex: '../img', to: 'img'},
-        {regex: '@img', to: 'img'},
-    ],
-})];
+// const htmlPages = [new FileIncludeWebpackPlugin({
+//     source: srcFolder,
+//     htmlBeautifyOptions: {
+//         indent_char: '  ',
+//         end_with_newline: true,
+//     },
+//     replace: [
+//         {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
+//         {regex: '../img', to: 'img'},
+//         {regex: '@img', to: 'img'},
+//     ],
+// })];
 
 const paths = {
     src: path.resolve(srcFolder),
@@ -55,6 +56,10 @@ const config = {
     module: {
         rules: [
             {
+                test: /\.ejs$/i,
+                use: ['html-loader', 'template-ejs-loader'],
+            },
+            {
                 test: /\.(scss|css)$/,
                 exclude: `${paths.src}/fonts`,
                 use: [
@@ -89,7 +94,12 @@ const config = {
         ],
     },
     plugins: [
-        ...htmlPages,
+        // ...htmlPages,
+        new HtmlWebpackPlugin({
+            template: './src/index.ejs',
+            alwaysWriteToDisk: true,
+        }),
+        new HtmlWebpackHardDiskPlugin(),
         new CopyPlugin({
             patterns: [
                 {

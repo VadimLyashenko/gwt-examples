@@ -12,8 +12,8 @@
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
     "el": "eslint .",
-    "sl": "stylelint \"**/*.{scss,htm,html}\"",
-    "hl": "htmlhint \"**/*.{htm,html}\""
+    "sl": "stylelint \"**/*.{scss,htm,html,ejs}\"",
+    "hl": "htmlhint \"**/*.{htm,html,ejs}\""
   },
   "devDependencies": {
     "@primer/css": "latest",
@@ -37,6 +37,9 @@
     "gulp-ttf2woff2": "latest",
     "gulp-webp": "latest",
     "gulp-webpcss": "latest",
+    "html-loader": "^4.2.0",
+    "html-webpack-harddisk-plugin": "^2.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "htmlhint": "^1.1.4",
     "inputmask": "latest",
     "lightgallery": "latest",
@@ -49,6 +52,7 @@
     "string-replace-loader": "latest",
     "style-loader": "latest",
     "swiper": "latest",
+    "template-ejs-loader": "^0.9.4",
     "terser-webpack-plugin": "latest",
     "tippy.js": "latest",
     "vanilla-lazyload": "latest",
