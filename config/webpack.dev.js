@@ -1,6 +1,5 @@
 import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackHardDiskPlugin from 'html-webpack-harddisk-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 
 const srcFolder = 'src';
@@ -50,6 +49,7 @@ const config = {
         watchFiles: [
             `${paths.src}/**/*.html`,
             `${paths.src}/**/*.htm`,
+            `${paths.src}/**/*.ejs`,
             `${paths.src}/img/**/*.*`,
         ],
     },
@@ -97,9 +97,7 @@ const config = {
         // ...htmlPages,
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
-            alwaysWriteToDisk: true,
         }),
-        new HtmlWebpackHardDiskPlugin(),
         new CopyPlugin({
             patterns: [
                 {
