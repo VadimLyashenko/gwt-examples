@@ -1,4 +1,5 @@
 import * as path from 'path';
+import {readdir} from 'fs/promises';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 
@@ -22,6 +23,19 @@ const paths = {
     src: path.resolve(srcFolder),
     build: path.resolve(buildFolder),
 };
+
+const srcFiles = await readdir(paths.src);
+const ejsPages = srcFiles
+    .filter(e => e.endsWith('.ejs'))
+    .map(e => e
+        .split('.')
+        .slice(0, -1)
+        .join('.'));
+
+const multipleHtmlPlugins = ejsPages.map(name => new HtmlWebpackPlugin({
+    template: `./src/${name}.ejs`,
+    filename: `${name}.html`,
+}));
 
 const config = {
     mode: 'development',
@@ -94,10 +108,7 @@ const config = {
         ],
     },
     plugins: [
-        // ...htmlPages,
-        new HtmlWebpackPlugin({
-            template: './src/index.ejs',
-        }),
+        ...multipleHtmlPlugins,
         new CopyPlugin({
             patterns: [
                 {
