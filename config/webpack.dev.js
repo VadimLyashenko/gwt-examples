@@ -65,6 +65,7 @@ const config = {
             `${paths.src}/**/*.htm`,
             `${paths.src}/**/*.ejs`,
             `${paths.src}/img/**/*.*`,
+            // `${paths.src}/data/**/*.json`,
         ],
     },
     module: {
