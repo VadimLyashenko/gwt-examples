@@ -2,6 +2,23 @@ import * as path from 'path';
 import {readdir} from 'fs/promises';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import jsBeautify from 'js-beautify';
+
+class HtmlBeautify {
+    apply(compiler) {
+        compiler.hooks.compilation.tap('HtmlBeautify', compilation => {
+            HtmlWebpackPlugin.getHooks(compilation)
+                .beforeEmit
+                .tapAsync('HtmlBeautify', (data, cb) => {
+                    data.html = jsBeautify.html(data.html, {
+                        indent_char: ' ',
+                        end_with_newline: true,
+                    });
+                    cb(null, data);
+                });
+        });
+    }
+}
 
 const srcFolder = 'src';
 const buildFolder = 'dist';
@@ -110,6 +127,7 @@ const config = {
     },
     plugins: [
         ...multipleHtmlPlugins,
+        new HtmlBeautify(),
         new CopyPlugin({
             patterns: [
                 {
