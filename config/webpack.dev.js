@@ -20,25 +20,9 @@ class HtmlBeautify {
     }
 }
 
-const srcFolder = 'src';
-const buildFolder = 'dist';
-
-// const htmlPages = [new FileIncludeWebpackPlugin({
-//     source: srcFolder,
-//     htmlBeautifyOptions: {
-//         indent_char: '  ',
-//         end_with_newline: true,
-//     },
-//     replace: [
-//         {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
-//         {regex: '../img', to: 'img'},
-//         {regex: '@img', to: 'img'},
-//     ],
-// })];
-
 const paths = {
-    src: path.resolve(srcFolder),
-    build: path.resolve(buildFolder),
+    src: path.resolve('src'),
+    build: path.resolve('dist'),
 };
 
 const srcFiles = await readdir(paths.src);
@@ -96,14 +80,14 @@ const config = {
                 exclude: `${paths.src}/fonts`,
                 use: [
                     'style-loader',
-                    {
-                        loader: 'string-replace-loader',
-                        options: {
-                            search: '@img',
-                            replace: '../img',
-                            flags: 'g',
-                        },
-                    },
+                    // {
+                    //     loader: 'string-replace-loader',
+                    //     options: {
+                    //         search: '@img',
+                    //         replace: '../img',
+                    //         flags: 'g',
+                    //     },
+                    // },
                     {
                         loader: 'css-loader',
                         options: {
@@ -131,7 +115,7 @@ const config = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: `${srcFolder}/img`,
+                    from: `${paths.src}/img`,
                     to: 'img',
                     noErrorOnMissing: true,
                     force: true,

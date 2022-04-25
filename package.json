@@ -22,7 +22,6 @@
     "css-loader": "latest",
     "del": "latest",
     "eslint": "latest",
-    "file-include-webpack-plugin": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
