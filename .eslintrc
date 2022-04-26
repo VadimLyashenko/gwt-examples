@@ -12,6 +12,21 @@
         "sourceType": "module"
     },
     "ignorePatterns": "src/js/libs",
+    "plugins": [
+        "@html-eslint"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.html",
+                "*.ejs"
+            ],
+            "parser": "@html-eslint/parser",
+            "extends": [
+                "plugin:@html-eslint/recommended"
+            ]
+        }
+    ],
     "rules": {
         "array-callback-return": 2,
         "no-constant-binary-expression": 2,
@@ -143,15 +158,15 @@
         ],
         "space-in-parens": 2,
         "space-unary-ops": 2,
-        "spaced-comment": [
-            2,
-            "always",
-            {
-                "exceptions": [
-                    "-+"
-                ]
-            }
-        ],
+//        "spaced-comment": [
+//            2,
+//            "always",
+//            {
+//                "exceptions": [
+//                    "-+"
+//                ]
+//            }
+//        ],
         "switch-colon-spacing": 2,
         "arrow-body-style": 2,
         "arrow-parens": [2, "as-needed"],

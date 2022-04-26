@@ -13,15 +13,17 @@
     "devbuild": "gulp build --build --no-webp",
     "el": "eslint .",
     "sl": "stylelint \"**/*.{scss,htm,html,ejs}\"",
-    "hl": "htmlhint \"**/*.{htm,html,ejs}\""
+    "hl": "htmlhint \"src/**/*.{htm,html,ejs}\""
   },
   "devDependencies": {
+    "@html-eslint/eslint-plugin": "^0.17.2",
+    "@html-eslint/parser": "^0.17.1",
     "@primer/css": "latest",
     "@primer/stylelint-config": "latest",
     "copy-webpack-plugin": "latest",
     "css-loader": "latest",
     "del": "latest",
-    "eslint": "latest",
+    "eslint": "^8.38.0",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
