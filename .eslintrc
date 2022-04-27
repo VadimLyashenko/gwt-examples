@@ -18,13 +18,23 @@
     "overrides": [
         {
             "files": [
-                "*.html",
                 "*.ejs"
             ],
             "parser": "@html-eslint/parser",
             "extends": [
                 "plugin:@html-eslint/recommended"
-            ]
+            ],
+            "rules": {
+                "@html-eslint/require-doctype": 0,
+                "@html-eslint/require-meta-charset": 2,
+                "@html-eslint/no-target-blank": 1,
+                "@html-eslint/require-button-type": 1,
+                "@html-eslint/require-meta-description": 1,
+                "@html-eslint/no-skip-heading-levels": 1,
+                "@html-eslint/no-positive-tabindex": 1,
+                "@html-eslint/no-aria-hidden-body": 2,
+                "@html-eslint/no-accesskey-attrs": 2
+            }
         }
     ],
     "rules": {
