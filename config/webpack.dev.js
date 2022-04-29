@@ -58,7 +58,7 @@ const config = {
         host: 'local-ip', // localhost
 
         // devMiddleware: {
-        //     writeToDisk: true,
+        //     writeToDisk: filePath => /^(?!.*(hot)).*/.test(filePath),
         // },
 
         watchFiles: [
