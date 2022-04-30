@@ -2,6 +2,7 @@ import * as path from 'path';
 import {readdir} from 'fs/promises';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import jsBeautify from 'js-beautify';
 
 class HtmlBeautify {
@@ -119,12 +120,12 @@ const config = {
                     to: 'img',
                     noErrorOnMissing: true,
                     force: true,
-                }, {
-                    from: `${paths.src}/favicon.ico`,
-                    to: './',
-                    noErrorOnMissing: true,
                 },
             ],
+        }),
+        new FaviconsWebpackPlugin({
+            logo: `${paths.src}/img/favicon.png`,
+            prefix: 'img/favicon/',
         }),
     ],
     resolve: {

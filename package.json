@@ -24,6 +24,8 @@
     "css-loader": "latest",
     "del": "latest",
     "eslint": "^8.38.0",
+    "favicons": "latest",
+    "favicons-webpack-plugin": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
