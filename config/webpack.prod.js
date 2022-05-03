@@ -3,8 +3,8 @@ import {readdir} from 'fs/promises';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
 const paths = {
     src: path.resolve('src'),
@@ -85,15 +85,11 @@ const config = {
         new MiniCssExtractPlugin({
             filename: '../css/style.css',
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: `${paths.src}/favicon.ico`,
-                    to: '../',
-                    noErrorOnMissing: true,
-                },
-            ],
-        }),
+        // new FaviconsWebpackPlugin({
+        //     logo: `${paths.src}/img/favicon.png`,
+        //     outputPath: '../img/favicon',
+        //     prefix: 'img/favicon/',
+        // }),
     ],
     resolve: {
         alias: {

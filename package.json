@@ -29,6 +29,7 @@
         "gulp": "latest",
         "gulp-autoprefixer": "latest",
         "gulp-clean-css": "latest",
+        "gulp-cssbeautify": "^3.0.1",
         "gulp-fonter-fix": "latest",
         "gulp-group-css-media-queries": "latest",
         "gulp-if": "latest",
