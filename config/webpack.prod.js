@@ -22,6 +22,8 @@ const ejsPages = srcFiles
 const multipleHtmlPlugins = ejsPages.map(name => new HtmlWebpackPlugin({
     template: `./src/${name}.ejs`,
     filename: `../${name}.html`,
+    // minify: false,
+    // inject: false,
 }));
 
 const config = {
@@ -37,13 +39,21 @@ const config = {
     output: {
         path: `${paths.build}`,
         filename: 'app.min.js',
-        publicPath: '/',
+        publicPath: '',
     },
     module: {
         rules: [
             {
                 test: /\.ejs$/i,
-                use: ['html-loader', 'template-ejs-loader'],
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: false,
+                        },
+                    },
+                    'template-ejs-loader',
+                ],
             },
             {
                 test: /\.(scss|css)$/,
@@ -85,11 +95,27 @@ const config = {
         new MiniCssExtractPlugin({
             filename: '../css/style.css',
         }),
-        // new FaviconsWebpackPlugin({
-        //     logo: `${paths.src}/img/favicon.png`,
-        //     outputPath: '../img/favicon',
-        //     prefix: 'img/favicon/',
-        // }),
+        new FaviconsWebpackPlugin({
+            logo: `${paths.src}/img/favicon.svg`,
+            outputPath: '../img/favicon',
+            prefix: 'img/favicon/',
+            favicons: {
+                appName: 'App name',
+                appDescription: 'App description',
+                developerName: 'Developer name',
+                developerURL: null,
+                // background: '#ddd',
+                // theme_color: '#333',
+                icons: {
+                    favicons: true,
+                    android: true,
+                    appleIcon: true,
+                    appleStartup: false,
+                    windows: false,
+                    yandex: false,
+                },
+            },
+        }),
     ],
     resolve: {
         alias: {

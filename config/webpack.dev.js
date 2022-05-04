@@ -124,7 +124,7 @@ const config = {
             ],
         }),
         new FaviconsWebpackPlugin({
-            logo: `${paths.src}/img/favicon.png`,
+            logo: `${paths.src}/img/favicon.svg`,
             prefix: 'img/favicon/',
         }),
     ],
