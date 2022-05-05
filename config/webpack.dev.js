@@ -73,8 +73,11 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.ejs$/i,
-                use: ['html-loader', 'template-ejs-loader'],
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false,
+                },
             },
             {
                 test: /\.(scss|css)$/,

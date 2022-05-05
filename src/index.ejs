@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('html/_head', {title: 'Index Page'}) %>
+    <!-- eslint-disable @html-eslint/indent -->
+    <%= require('./html/_head.ejs')({
+        hwp: htmlWebpackPlugin,
+        title: 'Index Page'
+    })
+    %>
+    <!-- eslint-enable @html-eslint/indent -->
     <body>
         <div class="wrapper">
-            <%- include('html/_header') %>
+            <%= require('./html/_header.ejs')() %>
             <main class="page">
+                <%= JSON.stringify(htmlWebpackPlugin.files) %>
             </main>
 
-            <%- include('html/_footer') %>
+            <%= require('./html/_footer.ejs')() %>
         </div>
-        <%- include('html/_popup') %>
+        <%= require('./html/_popup.ejs')() %>
     </body>
 </html>
