@@ -22,8 +22,8 @@ const ejsPages = srcFiles
 const multipleHtmlPlugins = ejsPages.map(name => new HtmlWebpackPlugin({
     template: `./src/${name}.ejs`,
     filename: `../${name}.html`,
+    inject: false,
     // minify: false,
-    // inject: false,
 }));
 
 const config = {
@@ -44,16 +44,11 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.ejs$/i,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: false,
-                        },
-                    },
-                    'template-ejs-loader',
-                ],
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false,
+                },
             },
             {
                 test: /\.(scss|css)$/,
