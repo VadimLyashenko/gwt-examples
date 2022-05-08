@@ -29,6 +29,9 @@
         "primer/spacing": null,
         "primer/borders": null,
         "primer/typography": null,
-        "at-rule-disallowed-list": null
+        "primer/box-shadow": null,
+        "at-rule-disallowed-list": null,
+        "max-nesting-depth": null,
+        "no-invalid-position-at-import-rule": null
     }
 }
