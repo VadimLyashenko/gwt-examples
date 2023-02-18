@@ -1,0 +1,28 @@
+{
+    "ignoreFiles": [
+        "dist/**",
+        "src/scss/libs/**"
+    ],
+    "extends": [
+        "@primer/stylelint-config"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "**/*.htm",
+                "**/*.html"
+            ],
+            "customSyntax": "postcss-html"
+        }
+    ],
+    "rules": {
+        "indentation": [
+            4,
+            {
+                "baseIndentLevel": 2
+            }
+        ],
+        "selector-max-type": null,
+        "primer/colors": null
+    }
+}

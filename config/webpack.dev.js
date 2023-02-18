@@ -4,19 +4,17 @@ import CopyPlugin from 'copy-webpack-plugin';
 
 const srcFolder = 'src';
 const buildFolder = 'dist';
-const rootFolder = path.basename(path.resolve());
 
 const htmlPages = [new FileIncludeWebpackPlugin({
     source: srcFolder,
     htmlBeautifyOptions: {
-        'indent-with-tabs': true,
-        indent_size: 3,
+        indent_char: '  ',
+        end_with_newline: true,
     },
     replace: [
         {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
         {regex: '../img', to: 'img'},
         {regex: '@img', to: 'img'},
-        {regex: 'NEW_PROJECT_NAME', to: rootFolder},
     ],
 })];
 
@@ -28,9 +26,6 @@ const paths = {
 const config = {
     mode: 'development',
     devtool: 'inline-source-map',
-    optimization: {
-        minimize: false,
-    },
     entry: `${paths.src}/js/app.js`,
     output: {
         path: `${paths.build}`,
@@ -38,7 +33,9 @@ const config = {
         publicPath: '/',
     },
     devServer: {
-        historyApiFallback: true,
+        historyApiFallback: {
+            index: '/404.html',
+        },
         static: paths.build,
         open: true,
         compress: true,
@@ -46,10 +43,6 @@ const config = {
         hot: true,
         host: 'local-ip', // localhost
 
-        /*
-         * On weak machine
-         * (in dev mode, folder will be on disk)
-         */
         // devMiddleware: {
         //     writeToDisk: true,
         // },
@@ -103,11 +96,6 @@ const config = {
                 {
                     from: `${srcFolder}/img`,
                     to: 'img',
-                    noErrorOnMissing: true,
-                    force: true,
-                }, {
-                    from: `${srcFolder}/files`,
-                    to: 'files',
                     noErrorOnMissing: true,
                     force: true,
                 }, {

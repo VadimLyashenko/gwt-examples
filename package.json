@@ -11,9 +11,13 @@
     "sprite": "gulp sprite",
     "fonts": "gulp fonts --rewrite",
     "devbuild": "gulp build --build --no-webp",
-    "el": "eslint ."
+    "el": "eslint .",
+    "sl": "stylelint \"**/*.{scss,htm,html}\"",
+    "hl": "htmlhint \"**/*.{htm,html}\""
   },
   "devDependencies": {
+    "@primer/css": "latest",
+    "@primer/stylelint-config": "latest",
     "copy-webpack-plugin": "latest",
     "css-loader": "latest",
     "del": "latest",
@@ -33,11 +37,12 @@
     "gulp-ttf2woff2": "latest",
     "gulp-webp": "latest",
     "gulp-webpcss": "latest",
-    "html-webpack-plugin": "latest",
+    "htmlhint": "^1.1.4",
     "inputmask": "latest",
     "lightgallery": "latest",
     "mini-css-extract-plugin": "2.4.7",
     "nouislider": "latest",
+    "postcss-html": "^1.5.0",
     "sass": "latest",
     "sass-loader": "latest",
     "smooth-scroll": "latest",
