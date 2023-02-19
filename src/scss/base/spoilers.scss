@@ -1,0 +1,64 @@
+// Snippet (HTML): spoiler
+
+// Spoilers block
+.spoilers {
+    display: grid;
+    gap: 15px;
+}
+
+// Spoiler
+.spoilers__item {
+    font-size: rem(20);
+}
+
+// Spoiler title
+.spoilers__title {
+    position: relative;
+    width: 100%;
+    padding: rem(10) rem(15);
+    text-align: left;
+    cursor: default;
+    border: 1px solid #eee;
+    border-radius: rem(5);
+
+    ._spoiler-init & {
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 15px;
+            height: 2px;
+            content: '';
+            background-color: #000;
+            transition: transform 0.5s ease 0s;
+        }
+
+        &::before {
+            transform: translate(-75%, -50%) rotate(40deg);
+        }
+
+        &::after {
+            transform: translate(0, -50%) rotate(-40deg);
+        }
+
+        &._spoiler-active {
+            &::before {
+                transform: translateX(-75%) rotate(-40deg);
+            }
+
+            &::after {
+                transform: rotate(40deg);
+            }
+        }
+    }
+}
+
+// Spoiler content
+.spoilers__body {
+    padding: rem(20);
+    border: 1px solid #eee;
+    border-radius: rem(5);
+}

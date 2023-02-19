@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- eslint-disable @html-eslint/indent -->
+    <%= require('./html/_head.ejs')({
+        hwp: htmlWebpackPlugin,
+        title: 'Page not found'
+    })
+    %>
+    <!-- eslint-enable @html-eslint/indent -->
+    <body>
+        <div class="wrapper">
+            <%= require('./html/_header.ejs')() %>
+
+            <main class="page" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <h1>404</h1>
+                <p>Page not found</p>
+            </main>
+
+            <%= require('./html/_footer.ejs')() %>
+        </div>
+        <%= require('./html/_popup.ejs')() %>
+    </body>
+</html>

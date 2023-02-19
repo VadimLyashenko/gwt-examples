@@ -1,12 +1,10 @@
-import webpack from 'webpack-stream';
-import webPackConfig from '../webpack.prod.js';
-import TerserPlugin from 'terser-webpack-plugin';
 import * as path from 'path';
 
-const paths = {
-    src: path.resolve('src'),
-    build: path.resolve('dist'),
-};
+import webpack from 'webpack-stream';
+import TerserPlugin from 'terser-webpack-plugin';
+
+import webPackConfig from '../webpack.prod.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const webPackConfigBeautify = Object.assign({}, webPackConfig);
 
@@ -34,10 +32,16 @@ webPackConfigBeautify.optimization = {
 };
 
 webPackConfigBeautify.output = {
-    path: `${paths.build}`,
+    path: path.resolve('dist'),
     filename: 'app.js',
     publicPath: '/',
 };
+
+webPackConfigBeautify.plugins = [
+    new MiniCssExtractPlugin({
+        filename: '../css/style.css',
+    }),
+];
 
 export const jsDev = () => app.gulp.src(app.path.src.js)
     .pipe(app.plugins.plumber(app.plugins.notify.onError({

@@ -1,27 +1,43 @@
 import * as path from 'path';
-import FileIncludeWebpackPlugin from 'file-include-webpack-plugin';
+import {readdir} from 'fs/promises';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
+import jsBeautify from 'js-beautify';
 
-const srcFolder = 'src';
-const buildFolder = 'dist';
-
-const htmlPages = [new FileIncludeWebpackPlugin({
-    source: srcFolder,
-    htmlBeautifyOptions: {
-        indent_char: '  ',
-        end_with_newline: true,
-    },
-    replace: [
-        {regex: '<link rel="stylesheet" href="css/style.min.css">', to: ''},
-        {regex: '../img', to: 'img'},
-        {regex: '@img', to: 'img'},
-    ],
-})];
+class HtmlBeautify {
+    apply(compiler) {
+        compiler.hooks.compilation.tap('HtmlBeautify', compilation => {
+            HtmlWebpackPlugin.getHooks(compilation)
+                .beforeEmit
+                .tapAsync('HtmlBeautify', (data, cb) => {
+                    data.html = jsBeautify.html(data.html, {
+                        indent_char: ' ',
+                        end_with_newline: true,
+                    });
+                    cb(null, data);
+                });
+        });
+    }
+}
 
 const paths = {
-    src: path.resolve(srcFolder),
-    build: path.resolve(buildFolder),
+    src: path.resolve('src'),
+    build: path.resolve('dist'),
 };
+
+const srcFiles = await readdir(paths.src);
+const ejsPages = srcFiles
+    .filter(e => e.endsWith('.ejs'))
+    .map(e => e
+        .split('.')
+        .slice(0, -1)
+        .join('.'));
+
+const multipleHtmlPlugins = ejsPages.map(name => new HtmlWebpackPlugin({
+    template: `./src/${name}.ejs`,
+    filename: `${name}.html`,
+}));
 
 const config = {
     mode: 'development',
@@ -40,34 +56,42 @@ const config = {
         open: true,
         compress: true,
         port: 'auto',
-        hot: true,
         host: 'local-ip', // localhost
 
         // devMiddleware: {
-        //     writeToDisk: true,
+        //     writeToDisk: filePath => /^(?!.*(hot)).*/.test(filePath),
         // },
 
         watchFiles: [
             `${paths.src}/**/*.html`,
             `${paths.src}/**/*.htm`,
+            `${paths.src}/**/*.ejs`,
             `${paths.src}/img/**/*.*`,
+            // `${paths.src}/data/**/*.json`,
         ],
     },
     module: {
         rules: [
             {
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false,
+                },
+            },
+            {
                 test: /\.(scss|css)$/,
                 exclude: `${paths.src}/fonts`,
                 use: [
                     'style-loader',
-                    {
-                        loader: 'string-replace-loader',
-                        options: {
-                            search: '@img',
-                            replace: '../img',
-                            flags: 'g',
-                        },
-                    },
+                    // {
+                    //     loader: 'string-replace-loader',
+                    //     options: {
+                    //         search: '@img',
+                    //         replace: '../img',
+                    //         flags: 'g',
+                    //     },
+                    // },
                     {
                         loader: 'css-loader',
                         options: {
@@ -90,20 +114,21 @@ const config = {
         ],
     },
     plugins: [
-        ...htmlPages,
+        ...multipleHtmlPlugins,
+        new HtmlBeautify(),
         new CopyPlugin({
             patterns: [
                 {
-                    from: `${srcFolder}/img`,
+                    from: `${paths.src}/img`,
                     to: 'img',
                     noErrorOnMissing: true,
                     force: true,
-                }, {
-                    from: `${paths.src}/favicon.ico`,
-                    to: './',
-                    noErrorOnMissing: true,
                 },
             ],
+        }),
+        new FaviconsWebpackPlugin({
+            logo: `${paths.src}/img/favicon.svg`,
+            prefix: 'img/favicon/',
         }),
     ],
     resolve: {

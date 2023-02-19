@@ -10,7 +10,8 @@
         {
             "files": [
                 "**/*.htm",
-                "**/*.html"
+                "**/*.html",
+                "**/*.ejs"
             ],
             "customSyntax": "postcss-html"
         }
@@ -22,7 +23,15 @@
                 "baseIndentLevel": 2
             }
         ],
+        "comment-empty-line-before": "always",
         "selector-max-type": null,
-        "primer/colors": null
+        "primer/colors": null,
+        "primer/spacing": null,
+        "primer/borders": null,
+        "primer/typography": null,
+        "primer/box-shadow": null,
+        "at-rule-disallowed-list": null,
+        "max-nesting-depth": null,
+        "no-invalid-position-at-import-rule": null
     }
 }

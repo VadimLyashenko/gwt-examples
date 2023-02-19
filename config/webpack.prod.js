@@ -1,31 +1,30 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import FileIncludeWebpackPlugin from 'file-include-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
-
 import * as path from 'path';
+import {readdir} from 'fs/promises';
 
-const srcFolder = 'src';
-const buildFolder = 'dist';
-const rootFolder = path.basename(path.resolve());
-
-const htmlPages = [new FileIncludeWebpackPlugin({
-    source: srcFolder,
-    destination: '../',
-    htmlBeautifyOptions: {
-        end_with_newline: true,
-    },
-    replace: [
-        {regex: '../img', to: 'img'},
-        {regex: '@img', to: 'img'},
-        {regex: 'NEW_PROJECT_NAME', to: rootFolder},
-    ],
-})];
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
 const paths = {
-    src: path.resolve(srcFolder),
-    build: path.resolve(buildFolder),
+    src: path.resolve('src'),
+    build: path.resolve('dist'),
 };
+
+const srcFiles = await readdir(paths.src);
+const ejsPages = srcFiles
+    .filter(e => e.endsWith('.ejs'))
+    .map(e => e
+        .split('.')
+        .slice(0, -1)
+        .join('.'));
+
+const multipleHtmlPlugins = ejsPages.map(name => new HtmlWebpackPlugin({
+    template: `./src/${name}.ejs`,
+    filename: `../${name}.html`,
+    inject: false,
+    // minify: false,
+}));
 
 const config = {
     mode: 'production',
@@ -40,22 +39,29 @@ const config = {
     output: {
         path: `${paths.build}`,
         filename: 'app.min.js',
-        publicPath: '/',
+        publicPath: '',
     },
     module: {
         rules: [
             {
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false,
+                },
+            },
+            {
                 test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'string-replace-loader',
-                        options: {
-                            search: '@img',
-                            replace: '../img',
-                            flags: 'g',
-                        },
-                    },
+                    // {
+                    //     loader: 'string-replace-loader',
+                    //     options: {
+                    //         search: '@img',
+                    //         replace: '../img',
+                    //         flags: 'g',
+                    //     },
+                    // },
                     {
                         loader: 'css-loader',
                         options: {
@@ -80,22 +86,30 @@ const config = {
         ],
     },
     plugins: [
-        ...htmlPages,
+        ...multipleHtmlPlugins,
         new MiniCssExtractPlugin({
             filename: '../css/style.css',
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: `${paths.src}/files`,
-                    to: '../files',
-                    noErrorOnMissing: true,
-                }, {
-                    from: `${paths.src}/favicon.ico`,
-                    to: '../',
-                    noErrorOnMissing: true,
+        new FaviconsWebpackPlugin({
+            logo: `${paths.src}/img/favicon.svg`,
+            outputPath: '../img/favicon',
+            prefix: 'img/favicon/',
+            favicons: {
+                appName: 'App name',
+                appDescription: 'App description',
+                developerName: 'Developer name',
+                developerURL: null,
+                // background: '#ddd',
+                // theme_color: '#333',
+                icons: {
+                    favicons: true,
+                    android: true,
+                    appleIcon: true,
+                    appleStartup: false,
+                    windows: false,
+                    yandex: false,
                 },
-            ],
+            },
         }),
     ],
     resolve: {

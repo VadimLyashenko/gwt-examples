@@ -1,23 +1,27 @@
 .tabs {
-  // .tabs__navigation
-  &__navigation {
-    display: flex;
-  }
-  // .tabs__title
-  &__title {
-    border: 1px solid #eee;
-    padding: rem(10) rem(15);
-    border-radius: rem(5);
-    &._tab-active {
-      border: 1px solid #000;
+    // .tabs__navigation
+    &__navigation {
+        display: flex;
     }
-  }
-  // .tabs__content
-  &__content {
-    border: 1px solid #eee;
-    padding: rem(10) rem(15);
-  }
-  // .tabs__body
-  // &__body {
-  // }
+
+    // .tabs__title
+    &__title {
+        padding: rem(10) rem(15);
+        border: $border-width $border-style #eee;
+        border-radius: rem(5);
+
+        &._tab-active {
+            border: $border-width $border-style #000;
+        }
+    }
+
+    // .tabs__content
+    &__content {
+        padding: rem(10) rem(15);
+        border: $border-width $border-style #eee;
+    }
+
+    // .tabs__body
+    // &__body {
+    // }
 }
