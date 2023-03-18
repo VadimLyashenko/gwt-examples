@@ -3,9 +3,8 @@ name: GWT Workflow
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -20,3 +19,6 @@ jobs:
 
       - name: build app
         run: npm run build
+
+      - name: GitHub Pages deploy
+        uses: peaceiris/actions-gh-pages@v3.9.2
