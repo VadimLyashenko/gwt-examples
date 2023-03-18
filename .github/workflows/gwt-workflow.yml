@@ -1,0 +1,22 @@
+name: GWT Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: get repository
+        uses: actions/checkout@v3
+
+      - name: install dependecies
+        run: npm i
+
+      - name: build app
+        run: npm run build
